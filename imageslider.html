@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image slider</title>
+    <style>
+        .container{
+            height: 400px;
+            width:700px;
+            margin: auto;
+        }
+        img{
+            width: 100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" onmouseover="stops()" onmouseout="starts()">
+        <img src="images/a.jpg" alt="image name" id="image">
+        <button class="left" onclick="prev()">&lt;</button>
+        <button class="right" onclick="next()">&gt;</button>
+    </div>
+
+    <script>
+        const image_array=['a.jpg','b.jpg','c.jpg','d.jpg','e.jpg']
+        const array_length=image_array.length
+        let i=0
+        let set=setInterval(demoFunction,5000)
+        //demoFunction is a function 
+        //5000 5 seconds time
+
+        function demoFunction(){
+            i++
+            i=i%array_length
+            document.getElementById('image').src="images/"+image_array[i]  
+        }
+        //i%array_length
+        // 0%5=0
+        // 1%5=1
+        // 2%5=2
+        // 3%5=3
+        // 4%5=4
+        // 5%5=0
+
+
+        function next(){
+            i++
+            i=i%array_length
+            document.getElementById('image').src="images/"+image_array[i] 
+        }
+
+        function prev(){
+             i--
+             if(i<0){
+                 i=array_length-1
+             }
+             document.getElementById('image').src="images/"+image_array[i]
+
+        }
+        function stops(){
+            clearInterval(set)
+        }
+        function starts(){
+            set=setInterval(demoFunction,5000)
+        }
+    </script>
+    
+</body>
+</html>
