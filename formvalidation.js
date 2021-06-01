@@ -94,3 +94,12 @@ function displayMsg(msg,id,color){
     document.getElementById(id).style.color=color
 
 }
+
+function validForm(){
+    if(fnameValidate() && lnameValidate() && emailValidate() && passwordValidate()){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
